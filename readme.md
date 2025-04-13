@@ -1,7 +1,9 @@
-# Setup Postgresql
-1. Note, if there is postgres on your computer/device, port 5432 is already in use. Therefore, replace the port other than 5432 (for example; 5433)
-2. In `docker-compose.yml`, provide `port` value like this `port : “new_port:5432`
+# **PostgreSQL Setup**
+1. If PostgreSQL is already installed on your machine, port 5432 is likely occupied. In that case, choose an alternative port, such as 5433.
 
-# Metabase Setup
-1. In `docker-compose.yml`, `host_db_port` is `5432`, unless outside of docker. As DBeaver will open the postgre database in docker. We will direct our DBeaver to use the `new_port` port
-1. Host database because it is in local docker, then use the host name `host.docker.internal`
+2. In your `docker-compose.yml` file, map the port like this: `ports: "your_custom_port:5432"`.
+
+# **Metabase Setup**
+1. The default `host_db_port` in `docker-compose.yml` is set to `5432`, unless you're running Metabase outside Docker. Since DBeaver will connect to the PostgreSQL instance inside the Docker container, make sure to connect using the custom port you defined earlier.
+
+2. Because the database is hosted locally within Docker, use `host.docker.internal` as the hostname when connecting.
